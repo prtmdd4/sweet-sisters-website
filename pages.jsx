@@ -10,7 +10,7 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
           <span className="hero-eyebrow"><span className="dot" /> First market — today! 🎪</span>
           <h1>
             <span className="rainbow-text">Boardroom</span><br />
-            in the <span className="underline">Woods</span>.
+            on the <span className="underline">Lake</span>.
           </h1>
           <p className="lede">
             Hand-bagged candy curated by two sisters (and one very involved dog, Penny). We're also <strong>showing our work</strong> — every step it takes to start a real business, so other kid-preneurs can do it too.
@@ -539,7 +539,7 @@ function MapPage({ revenue, goal }) {
       </div>
 
       <div className="map-wrap">
-        <div className="map-title">~ Scaling Roadmap · The Boardroom in the Woods ~</div>
+        <div className="map-title">~ Scaling Roadmap · The Boardroom on the Lake ~</div>
         <div className="compass">N<br/>↑<br/>S</div>
         <div className="map">
           <svg className="trail" viewBox="0 0 100 100" preserveAspectRatio="none">

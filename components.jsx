@@ -31,7 +31,7 @@ function Logo({ onClick }) {
       <img src="assets/logo.png" alt="Sweet Sisters" />
       <div>
         <div style={{ fontFamily: 'Fredoka', fontWeight: 700, fontSize: 18, lineHeight: 1, marginBottom: 2 }}>The Boardroom</div>
-        <div className="nav-tagline">in the woods ✨</div>
+        <div className="nav-tagline">on the lake ✨</div>
       </div>
     </div>
   );
@@ -96,7 +96,7 @@ function Toast({ message }) {
 
 // --- Marquee stripe ---
 function Marquee() {
-  const items = ['First market today 🎪', 'Bags + freezies', 'Built by kid-preneurs', 'Learn how we did it', 'Boardroom in the Woods', 'Scan · Build · Smile'];
+  const items = ['First market today 🎪', 'Bags + freezies', 'Built by kid-preneurs', 'Learn how we did it', 'Boardroom on the Lake', 'Scan · Build · Smile'];
   return (
     <div className="marquee">
       <div className="marquee-track">
