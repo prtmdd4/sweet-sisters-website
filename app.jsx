@@ -71,7 +71,7 @@ function App() {
 
       <Footer setPage={setPage} />
 
-      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} cart={cart} setCart={setCart} setPage={setPage} candies={CANDIES} />
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} cart={cart} setCart={setCart} setPage={setPage} />
       <Toast message={toast} />
 
       <TweaksPanel title="Tweaks">

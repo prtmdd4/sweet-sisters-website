@@ -75,7 +75,7 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
         <SectionHead eyebrow="straight from the lab" title="This week's bags" sub="Limited mixes. Limited choices. (That's a Pro Tip — keep scrolling.)" />
         <div className="bags">
           {BAGS.map(b => (
-            <BagCard key={b.id} bag={b} onAdd={() => addToCart({ id: b.id, name: b.name, price: b.price, color: b.colors[0], qty: 1 })} />
+            <BagCard key={b.id} bag={b} onAdd={() => addToCart({ id: b.id, name: b.name, price: b.price, color: '#ff3a8c', qty: 1 })} />
           ))}
         </div>
       </section>
@@ -115,10 +115,7 @@ function BagCard({ bag, onAdd }) {
     <div className="bag" onClick={(e) => { if (!e.target.closest('button')) onAdd(); }}>
       <div className="bag-photo" style={{ background: '#fff8ee' }}>
         <div className="bag-tag">{bag.tag}</div>
-        {bag.image
-          ? <img src={bag.image} alt={bag.name} style={{ width: '88%', height: '100%', objectFit: 'contain' }} />
-          : <div className="gummies">{bag.colors.flatMap((c, i) => ([...Array(4)].map((_, j) => (<GummyIcon key={`${i}-${j}`} color={c} rotate={(i + j) % 2 ? 8 : -6} />))))}</div>
-        }
+        <img src={bag.image} alt={bag.name} style={{ width: '88%', height: '100%', objectFit: 'contain' }} />
       </div>
       <h4>{bag.name}</h4>
       <div className="bag-meta">
@@ -237,7 +234,7 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
             <div className="button-style-toggle">
               {PACKAGING.map(p => (
                 <button key={p.id} className={packId === p.id ? 'on' : ''} onClick={() => setPackId(p.id)}>
-                  {p.id === 'holo' ? '🌟' : '✨'} {p.targetG}g · ${p.salePrice}
+                  {p.id === 'small' ? '🛍️' : '🎁'} {p.targetG}g · ${p.salePrice}
                 </button>
               ))}
             </div>
@@ -453,7 +450,7 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
           <div className="lesson-card">
             <div className="lesson-num">⚖️</div>
             <h4>Cost per bag</h4>
-            <p>Sum every piece you put in, plus the bag itself. The mylar bag alone is $0.27.</p>
+            <p>Sum every piece you put in, plus the bag itself. The bag alone is $0.19–$0.27.</p>
           </div>
           <div className="lesson-card">
             <div className="lesson-num">💰</div>
@@ -473,7 +470,7 @@ function ShopPage({ addToCart }) {
       <SectionHead eyebrow="ready to grab" title="The Candy Shop" sub="Curated bags weighed and priced in the lab. Pick one or three." />
       <div className="bags" style={{ marginTop: 32 }}>
         {BAGS.map(b => (
-          <BagCard key={b.id} bag={b} onAdd={() => addToCart({ id: b.id, name: b.name, price: b.price, color: b.colors[0], qty: 1 })} />
+          <BagCard key={b.id} bag={b} onAdd={() => addToCart({ id: b.id, name: b.name, price: b.price, color: '#ff3a8c', qty: 1 })} />
         ))}
       </div>
 
@@ -665,7 +662,7 @@ function FoundersPage() {
     <div className="page" data-screen-label="05 Founders">
       <SectionHead
         eyebrow="meet the team"
-        title="Two sisters. One dog. A lot of sugar."
+        title="Two sisters. A lot of sugar."
         sub="We're fun experts — masters of sugar, and the math of small business."
         align="center"
       />
