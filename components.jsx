@@ -79,7 +79,7 @@ function Footer({ setPage }) {
       </div>
       <div>Hand-bagged in the Kawartha Lakes · Pickup or regional delivery · Also a kid-preneur learning project</div>
       <div className="footer-url">sweetsisterstreats.shop</div>
-      <div style={{ marginTop: 14, fontSize: 13 }}>© 2026 Sweet Sisters · A Petpreneur production 🐶</div>
+      <div style={{ marginTop: 14, fontSize: 13 }}>© 2026 Sweet Sisters · A kid-preneur production 🍬</div>
     </footer>
   );
 }

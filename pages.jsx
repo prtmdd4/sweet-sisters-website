@@ -13,7 +13,7 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
             on the <span className="underline">Lake</span>.
           </h1>
           <p className="lede">
-            Hand-bagged candy curated by two sisters (and one very involved dog, Penny). We're also <strong>showing our work</strong> — every step it takes to start a real business, so other kid-preneurs can do it too.
+            Hand-bagged candy curated by two sisters. We're also <strong>showing our work</strong> — every step it takes to start a real business, so other kid-preneurs can do it too.
           </p>
           <div className="hero-ctas">
             <GummyButton color="pink" size="lg" onClick={() => setPage('shop')}>
@@ -711,18 +711,6 @@ function FoundersPage() {
         </div>
       </div>
 
-      <section className="section">
-        <SectionHead eyebrow="the chair (technically)" title="Penny, our CCO." sub="Chief Candy Officer. Doesn't eat candy. Tastes the air. Approves the vibe." align="center" />
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
-          <div className="founder" style={{ maxWidth: 460, textAlign: 'center' }}>
-            <div className="founder-photo" style={{ aspectRatio: '1/1', maxWidth: 280, margin: '0 auto 16px' }}>
-              <span style={{ fontSize: 80 }}>🐶</span>
-            </div>
-            <h3 style={{ justifyContent: 'center' }}>Penny <span className="role">Chief Candy Officer</span></h3>
-            <p>Senior advisor. Quality control. Foot warmer. Featured in every hero shot whether the camera is ready or not.</p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
