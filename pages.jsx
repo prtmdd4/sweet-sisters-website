@@ -134,7 +134,7 @@ function BagCard({ bag, onAdd }) {
 function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
   const [counts, setCounts] = useState({});
   const [warning, setWarning] = useState('');
-  const [packId, setPackId] = useState('mylar');     // 'holo' or 'mylar'
+  const [packId, setPackId] = useState('small');     // 'small' or 'large'
   const [founderMode, setFounderMode] = useState(false);
 
   const pack = PACKAGING.find(p => p.id === packId);
