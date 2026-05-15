@@ -36,7 +36,7 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
           </div>
           <div className="hero-stickers">
             <div className="sticker s1">180g for $5!</div>
-            <div className="sticker s2">360g for $10 🍬</div>
+            <div className="sticker s2">Bubs 🍬</div>
             <div className="sticker s3">Built by kids 👯</div>
           </div>
         </div>
@@ -699,7 +699,7 @@ function FoundersPage() {
         <div>
           <div style={{ fontFamily: 'Caveat', fontSize: 28, color: 'var(--yellow)' }}>~ behind the scenes ~</div>
           <h3>The Top Secret Weighing</h3>
-          <p>Watch us weigh the Swedish Skulls, balance a bag to exactly 200g, and argue about how many sour keys is "too many." Studio-lit, founder-approved.</p>
+          <p>Watch us weigh the Swedish Skulls, balance a bag to exactly 180g, and argue about how many Bubs is "too many." Studio-lit, founder-approved.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <GummyButton color="yellow">▶ Watch the film</GummyButton>
             <button className="gummy ghost">Read the recipe</button>
