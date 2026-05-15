@@ -31,15 +31,12 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
         </div>
         <div className="hero-visual">
           <div className="blob" />
-          <div className="hero-photo">
-            <div className="photo-label">Hero photo<br/>candy + Penny popping out</div>
-            <div className="penny">
-              <span className="tag">PENNY · CCO</span>
-            </div>
+          <div className="hero-photo" style={{ background: 'none', overflow: 'hidden' }}>
+            <img src="assets/thefounders.jpg" alt="Keira and Lucy — the Sweet Sisters" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
           </div>
           <div className="hero-stickers">
-            <div className="sticker s1">200g for $8.50!</div>
-            <div className="sticker s2">Sour Keys 🗝️</div>
+            <div className="sticker s1">180g for $5!</div>
+            <div className="sticker s2">360g for $10 🍬</div>
             <div className="sticker s3">Built by kids 👯</div>
           </div>
         </div>
