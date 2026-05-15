@@ -116,15 +116,12 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
 function BagCard({ bag, onAdd }) {
   return (
     <div className="bag" onClick={(e) => { if (!e.target.closest('button')) onAdd(); }}>
-      <div className="bag-photo">
+      <div className="bag-photo" style={{ background: '#fff8ee' }}>
         <div className="bag-tag">{bag.tag}</div>
-        <div className="gummies">
-          {bag.colors.flatMap((c, i) => (
-            [...Array(4)].map((_, j) => (
-              <GummyIcon key={`${i}-${j}`} color={c} rotate={(i + j) % 2 ? 8 : -6} />
-            ))
-          ))}
-        </div>
+        {bag.image
+          ? <img src={bag.image} alt={bag.name} style={{ width: '88%', height: '100%', objectFit: 'contain' }} />
+          : <div className="gummies">{bag.colors.flatMap((c, i) => ([...Array(4)].map((_, j) => (<GummyIcon key={`${i}-${j}`} color={c} rotate={(i + j) % 2 ? 8 : -6} />))))}</div>
+        }
       </div>
       <h4>{bag.name}</h4>
       <div className="bag-meta">
@@ -676,9 +673,12 @@ function FoundersPage() {
         align="center"
       />
 
-      <div className="founders">
+      <div style={{ borderRadius: 32, overflow: 'hidden', border: '3px solid var(--ink)', boxShadow: '10px 10px 0 var(--ink)', marginTop: 32 }}>
+        <img src="assets/thefounders.jpg" alt="Keira and Lucy — the Sweet Sisters" style={{ width: '100%', display: 'block', objectFit: 'cover', maxHeight: 560 }} />
+      </div>
+
+      <div className="founders" style={{ marginTop: 28 }}>
         <div className="founder">
-          <div className="founder-photo">Founder portrait · Keira</div>
           <h3>Keira <span className="role">co-founder & lead designer</span></h3>
           <p>The hand behind the gummy bear buttons and the bag stickers. Drawing tablet evangelist. Will redesign the logo at 11pm.</p>
           <div className="founder-stats">
@@ -688,7 +688,6 @@ function FoundersPage() {
           </div>
         </div>
         <div className="founder">
-          <div className="founder-photo">Founder portrait · Lucy</div>
           <h3>Lucy <span className="role">co-founder & head of math</span></h3>
           <p>The one who keeps the spreadsheets and weighs every bag to the gram. Set the choice limit. Wrote Pro Tip #1 on the whiteboard in red marker.</p>
           <div className="founder-stats">

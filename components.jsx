@@ -220,16 +220,14 @@ const CANDIES = [
 const CATEGORIES = ['Viral Hero', 'Showstopper', 'Spine', 'Mid-Fill', 'Base', 'Specialty', 'Filler'];
 
 const PACKAGING = [
-  { id: 'holo',  name: 'Holographic Bag (Small)', cost: 0.19, targetG: 100, salePrice: 6 },
-  { id: 'mylar', name: 'Mylar Bag (Large)',       cost: 0.27, targetG: 180, salePrice: 10 },
+  { id: 'small', name: 'Small Bag (180g)', cost: 0.19, targetG: 180, salePrice: 5 },
+  { id: 'large', name: 'Large Bag (360g)', cost: 0.27, targetG: 360, salePrice: 10 },
 ];
 
 // --- Pre-built bag products ---
 const BAGS = [
-  { id: 'classic', name: 'The Classic Mix', tag: 'Bestseller', weight: '200g', price: 8.5, colors: ['#ff3a8c', '#ffcc1f', '#2bc46b', '#2e9bff'] },
-  { id: 'sour', name: 'Sour Patch Lab', tag: 'Lab Pick', weight: '180g', price: 9.0, colors: ['#2bc46b', '#ffcc1f', '#ff7a1f'] },
-  { id: 'rainbow', name: 'Rainbow Riot', tag: 'New', weight: '220g', price: 10.0, colors: ['#ff3a8c', '#ff7a1f', '#ffcc1f', '#2bc46b', '#2e9bff', '#a04ce8'] },
-  { id: 'penny', name: "Penny's Pick", tag: '🐶 Approved', weight: '160g', price: 7.5, colors: ['#a04ce8', '#ff3a8c', '#2e9bff'] },
+  { id: 'small', name: 'Sweet Sisters Mix', tag: '180g', weight: '180g', price: 5, image: 'assets/180g-bag.png' },
+  { id: 'large', name: 'Sweet Sisters Mix', tag: '360g', weight: '360g', price: 10, image: 'assets/360g-bag.png' },
 ];
 
 Object.assign(window, {
