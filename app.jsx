@@ -4,7 +4,6 @@ const { useState: useS, useEffect: useE } = React;
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "rainbow",
   "buttonStyle": "gummy",
-  "choiceLimit": 4,
   "revenue": 0,
   "goal": 250,
   "showHeroStickers": true
@@ -16,6 +15,9 @@ function App() {
   const [cart, setCart] = useS([]);
   const [cartOpen, setCartOpen] = useS(false);
   const [toast, setToast] = useS(null);
+  const [comingSoonOpen, setComingSoonOpen] = useS(false);
+
+  const openComingSoon = () => setComingSoonOpen(true);
 
   // theme class on body
   useE(() => {
@@ -56,14 +58,13 @@ function App() {
     <>
       <Header page={page} setPage={setPage} cart={cart} openCart={() => setCartOpen(true)} />
 
-      {page === 'home' && <HomePage setPage={setPage} addToCart={addToCart} choiceLimit={t.choiceLimit} />}
-      {page === 'shop' && <ShopPage addToCart={addToCart} />}
+      {page === 'home' && <HomePage setPage={setPage} openComingSoon={openComingSoon} />}
+      {page === 'shop' && <ShopPage openComingSoon={openComingSoon} />}
+      {page === 'notes' && <FieldNotesPage setPage={setPage} />}
       {page === 'lab' && (
         <LogicLabPage
-          addToCart={addToCart}
           buttonStyle={t.buttonStyle}
           setButtonStyle={(v) => setTweak({ buttonStyle: v })}
-          choiceLimit={t.choiceLimit}
         />
       )}
       {page === 'map' && <MapPage revenue={t.revenue} goal={t.goal} />}
@@ -71,7 +72,8 @@ function App() {
 
       <Footer setPage={setPage} />
 
-      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} cart={cart} setCart={setCart} setPage={setPage} />
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} cart={cart} setCart={setCart} setPage={setPage} openComingSoon={openComingSoon} />
+      <ComingSoonModal open={comingSoonOpen} onClose={() => setComingSoonOpen(false)} />
       <Toast message={toast} />
 
       <TweaksPanel title="Tweaks">
@@ -95,12 +97,6 @@ function App() {
           onChange={(v) => setTweak({ buttonStyle: v })}
           options={[{ value: 'gummy', label: 'Gummy' }, { value: 'nerd', label: 'Nerd' }]}
         />
-        <TweakSlider
-          label="Flavours per bag (limit)"
-          value={t.choiceLimit}
-          min={2} max={6} step={1}
-          onChange={(v) => setTweak({ choiceLimit: v })}
-        />
 
         <TweakSection label="Roadmap" />
         <TweakSlider
@@ -118,6 +114,7 @@ function App() {
 
         <TweakSection label="Quick jump" />
         <TweakButton label="🛍️ Shop" onClick={() => setPage('shop')} />
+        <TweakButton label="📓 Field Notes" onClick={() => setPage('notes')} />
         <TweakButton label="🧪 Logic Lab" onClick={() => setPage('lab')} />
         <TweakButton label="🗺️ Roadmap" onClick={() => setPage('map')} />
         <TweakButton label="👯 Founders" onClick={() => setPage('founders')} />

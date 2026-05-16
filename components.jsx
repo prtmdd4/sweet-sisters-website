@@ -37,11 +37,104 @@ function Logo({ onClick }) {
   );
 }
 
+// --- Coming Soon Modal ---
+function ComingSoonModal({ open, onClose }) {
+  const [email, setEmail] = useState('');
+  const [done, setDone] = useState(false);
+
+  if (!open) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email.trim()) setDone(true);
+  };
+
+  return (
+    <>
+      <div
+        style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(43,27,58,0.55)',
+          zIndex: 80,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: 24,
+          animation: 'fade 0.2s',
+        }}
+        onClick={onClose}
+      >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            background: 'var(--cream)',
+            borderRadius: 32,
+            border: '3px solid var(--ink)',
+            boxShadow: '10px 10px 0 var(--ink)',
+            padding: '36px 32px 32px',
+            maxWidth: 460,
+            width: '100%',
+            position: 'relative',
+          }}
+        >
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: 10,
+            background: 'var(--rainbow)', borderRadius: '29px 29px 0 0',
+          }} />
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute', top: 20, right: 20,
+              background: 'none', border: 'none', cursor: 'pointer',
+              fontSize: 22, color: 'var(--ink)', lineHeight: 1,
+            }}
+          >✕</button>
+          <div style={{ fontSize: 48, marginBottom: 12 }}>🚧</div>
+          <h3 style={{ fontFamily: 'Fredoka', fontSize: 28, marginBottom: 10 }}>Online ordering coming soon!</h3>
+          <p style={{ color: 'var(--ink-soft)', marginBottom: 22, fontSize: 16 }}>
+            In the meantime, find us at the market or get on our mailing list — we'll send updates about what we're learning, new products, and when the shop opens.
+          </p>
+          {done ? (
+            <div style={{
+              background: 'var(--green)', color: 'white',
+              borderRadius: 16, padding: '16px 20px',
+              fontFamily: 'Fredoka', fontSize: 20, textAlign: 'center',
+              border: '2px solid var(--ink)',
+            }}>
+              You're on the list! 🎉
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <input
+                type="email"
+                required
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  flex: '1 1 200px',
+                  padding: '12px 16px',
+                  borderRadius: 99,
+                  border: '2px solid var(--ink)',
+                  fontFamily: 'Nunito',
+                  fontSize: 15,
+                  outline: 'none',
+                  background: 'white',
+                }}
+              />
+              <GummyButton type="submit" color="pink">Notify me</GummyButton>
+            </form>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
 // --- Header / nav ---
 function Header({ page, setPage, cart, openCart }) {
   const links = [
     ['home', 'Home'],
     ['shop', 'Candy Shop'],
+    ['notes', 'Field Notes'],
     ['lab', 'Logic Lab'],
     ['map', 'Scaling Roadmap'],
     ['founders', 'Founders'],
@@ -73,6 +166,7 @@ function Footer({ setPage }) {
       <div className="footer-nav">
         <a onClick={() => setPage('home')}>Home</a>
         <a onClick={() => setPage('shop')}>Candy Shop</a>
+        <a onClick={() => setPage('notes')}>Field Notes</a>
         <a onClick={() => setPage('lab')}>Logic Lab</a>
         <a onClick={() => setPage('map')}>Scaling Roadmap</a>
         <a onClick={() => setPage('founders')}>Founders</a>
@@ -109,7 +203,7 @@ function Marquee() {
 }
 
 // --- Cart drawer ---
-function CartDrawer({ open, onClose, cart, setCart, setPage, candies }) {
+function CartDrawer({ open, onClose, cart, setCart, setPage, openComingSoon }) {
   if (!open) return null;
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
   return (
@@ -149,7 +243,7 @@ function CartDrawer({ open, onClose, cart, setCart, setPage, candies }) {
               <span className="price">${subtotal.toFixed(2)}</span>
             </div>
             <div style={{ marginTop: 18, display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <GummyButton color="green" onClick={() => { alert('Checkout opens here — secure Stripe / Shopify handoff'); }}>Checkout 🔒</GummyButton>
+              <GummyButton color="green" onClick={() => { onClose(); openComingSoon(); }}>Checkout 🔒</GummyButton>
               <button className="gummy ghost" onClick={() => setCart([])}>Empty bag</button>
             </div>
             <div style={{ marginTop: 18, fontSize: 13, color: 'var(--ink-soft)', fontFamily: 'Fredoka' }}>
@@ -219,9 +313,18 @@ const CANDIES = [
 
 const CATEGORIES = ['Viral Hero', 'Showstopper', 'Spine', 'Mid-Fill', 'Base', 'Specialty', 'Filler'];
 
+const STICKER_COST = 0.15;
+
 const PACKAGING = [
-  { id: 'small', name: 'Small Bag (180g)', cost: 0.19, targetG: 180, salePrice: 5 },
-  { id: 'large', name: 'Large Bag (360g)', cost: 0.27, targetG: 360, salePrice: 10 },
+  { id: 'small', name: 'Small Bag (180g)', cost: 0.19, targetG: 180, salePrice: 5, stickerCost: 0.15 },
+  { id: 'large', name: 'Large Bag (360g)', cost: 0.27, targetG: 360, salePrice: 10, stickerCost: 0.15 },
+];
+
+const LESSONS = [
+  { id: 4, date: 'May 15, 2026', tag: 'Sales', lesson: "Introduction before the actual sale is important — telling people who we are and what we're doing made a huge difference." },
+  { id: 3, date: 'May 15, 2026', tag: 'Sales', lesson: "A lot of people don't carry cash, so having credit and debit as an option is a good idea." },
+  { id: 2, date: 'May 15, 2026', tag: 'Pricing', lesson: "Bubs cost more than we thought — having two in one bag when selling for $5 is not a good idea." },
+  { id: 1, date: 'May 15, 2026', tag: 'Packaging', lesson: "If you don't select media type when printing labels with a laser printer, within a day they will look like they were printed years ago." },
 ];
 
 // --- Pre-built bag products ---
@@ -232,5 +335,5 @@ const BAGS = [
 
 Object.assign(window, {
   GummyButton, NerdButton, GummyIcon, Logo, Header, Footer, Toast, Marquee, CartDrawer, SectionHead, Tip,
-  CANDIES, BAGS, CATEGORIES, PACKAGING,
+  ComingSoonModal, CANDIES, BAGS, CATEGORIES, PACKAGING, STICKER_COST, LESSONS,
 });

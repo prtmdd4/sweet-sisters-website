@@ -1826,3 +1826,44 @@ body.theme-calm .rainbow-text {
   color: var(--ink-soft);
   font-size: 14.5px;
 }
+
+/* ===== Field Notes (sticky-note journal style) ===== */
+.field-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+.field-note-card {
+  background: #fefce8;
+  border: 2px solid rgba(43, 27, 58, 0.15);
+  border-radius: 4px 18px 18px 4px;
+  padding: 22px 20px 18px;
+  box-shadow:
+    4px 4px 0 rgba(43, 27, 58, 0.1),
+    0 8px 24px -10px rgba(43, 27, 58, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.field-note-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 6px; height: 100%;
+  background: var(--rainbow);
+  border-radius: 4px 0 0 4px;
+}
+.field-note-card:hover {
+  transform: translateY(-3px) rotate(0deg) !important;
+  box-shadow: 6px 8px 0 rgba(43, 27, 58, 0.12), 0 16px 32px -12px rgba(43, 27, 58, 0.25);
+}
+.field-note-num {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  line-height: 1;
+}
+
+/* Coming soon modal backdrop + content handled inline */

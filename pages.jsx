@@ -1,31 +1,107 @@
 // === Sweet Sisters · Pages ===
 
+// ============ MAILING LIST SECTION ============
+function MailingListSection() {
+  const [email, setEmail] = useState('');
+  const [done, setDone] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email.trim()) setDone(true);
+  };
+
+  return (
+    <section style={{
+      marginTop: 84,
+      background: 'var(--ink)',
+      borderRadius: 32,
+      padding: '44px 36px',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0, height: 8,
+        background: 'var(--rainbow)',
+      }} />
+      <div style={{ maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ fontFamily: 'Caveat', fontSize: 28, color: 'var(--pink)', marginBottom: 6 }}>
+          ~ stay in the loop ~
+        </div>
+        <h2 style={{ fontFamily: 'Fredoka', fontSize: 'clamp(28px, 4vw, 42px)', color: 'var(--cream)', marginBottom: 14, lineHeight: 1.1 }}>
+          Follow our journey
+        </h2>
+        <p style={{ color: 'rgba(255,248,238,0.75)', fontSize: 17, marginBottom: 28, lineHeight: 1.6 }}>
+          We send occasional updates about what we're learning, new products, and what's next for Sweet Sisters. No spam, just the real stuff.
+        </p>
+        {done ? (
+          <div style={{
+            background: 'var(--green)', color: 'white',
+            borderRadius: 99, padding: '16px 28px',
+            fontFamily: 'Fredoka', fontSize: 22,
+            border: '2px solid rgba(255,255,255,0.3)',
+            display: 'inline-block',
+          }}>
+            You're on the list! 🎉
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <input
+              type="email"
+              required
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{
+                flex: '1 1 220px',
+                maxWidth: 320,
+                padding: '14px 20px',
+                borderRadius: 99,
+                border: '2px solid rgba(255,255,255,0.2)',
+                fontFamily: 'Nunito',
+                fontSize: 16,
+                outline: 'none',
+                background: 'rgba(255,255,255,0.1)',
+                color: 'var(--cream)',
+              }}
+            />
+            <GummyButton type="submit" color="pink">Subscribe</GummyButton>
+          </form>
+        )}
+      </div>
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, height: 8,
+        background: 'var(--rainbow)',
+      }} />
+    </section>
+  );
+}
+
 // ============ HOME / CANDY LAB ============
-function HomePage({ setPage, addToCart, choiceLimit }) {
+function HomePage({ setPage, openComingSoon }) {
   return (
     <div className="page" data-screen-label="01 Home">
       {/* Hero */}
       <section className="hero">
         <div>
-          <span className="hero-eyebrow"><span className="dot" /> First market — today! 🎪</span>
+          <span className="hero-eyebrow"><span className="dot" /> A Homeschool Startup Story 🎪</span>
           <h1>
             <span className="rainbow-text">Boardroom</span><br />
             on the <span className="underline">Lake</span>.
           </h1>
           <p className="lede">
-            Hand-bagged candy curated by two sisters. We're also <strong>showing our work</strong> — every step it takes to start a real business, so other kid-preneurs can do it too.
+            This bag was curated by <strong>Keira (9)</strong> and <strong>Lucy (6)</strong> as part of their journey as Canadian entrepreneurs. As homeschoolers, the girls lead every part of the business — from precision weighing and inventory math to digital brand design. Every treat helps fund their next big project. You're in the right place to see their progress and learn with them!
           </p>
           <div className="hero-ctas">
             <GummyButton color="pink" size="lg" onClick={() => setPage('shop')}>
               🛍️ Shop the Bags
             </GummyButton>
-            <GummyButton color="ghost" onClick={() => setPage('lab')}>
-              🧪 Build Your Own
+            <GummyButton color="ghost" onClick={() => setPage('notes')}>
+              📓 Field Notes
             </GummyButton>
           </div>
           <div style={{ display: 'flex', gap: 18, marginTop: 28, flexWrap: 'wrap', fontFamily: 'Fredoka', fontSize: 14, color: 'var(--ink-soft)' }}>
-            <span>✓ Curated, not overwhelming</span>
-            <span>✓ Built by 2 kid-preneurs</span>
+            <span>✓ Curated by two sisters</span>
+            <span>✓ Homeschool entrepreneurs</span>
             <span>✓ A learning platform too</span>
           </div>
         </div>
@@ -49,7 +125,7 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
       <section className="section" style={{ marginTop: 56 }}>
         <div className="learn-hero">
           <div className="learn-hero-left">
-            <div className="section-eyebrow" style={{ color: 'var(--purple)' }}>kid-preneur curriculum</div>
+            <div className="section-eyebrow" style={{ color: 'var(--purple)' }}>homeschool curriculum in action</div>
             <h2 className="section-title" style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}>This site teaches how to <span className="rainbow-text">build a business</span>.</h2>
             <p style={{ marginTop: 14, color: 'var(--ink-soft)', fontSize: 18, maxWidth: 540 }}>
               We're showing the math, the steps, and the mistakes. If you want to start your own thing, follow our roadmap.
@@ -60,8 +136,8 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
             </div>
           </div>
           <div className="learn-hero-right">
-            <div className="learn-pill"><span>🧪</span> Source &amp; taste-test</div>
-            <div className="learn-pill"><span>📋</span> Food safety certified</div>
+            <div className="learn-pill"><span>⚖️</span> Precision weighing</div>
+            <div className="learn-pill"><span>📊</span> Inventory math</div>
             <div className="learn-pill"><span>🎨</span> Brand &amp; packaging</div>
             <div className="learn-pill"><span>🤖</span> Built with AI</div>
             <div className="learn-pill"><span>🪧</span> Sell at the market</div>
@@ -75,8 +151,23 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
         <SectionHead eyebrow="straight from the lab" title="This week's bags" sub="Limited mixes. Limited choices. (That's a Pro Tip — keep scrolling.)" />
         <div className="bags">
           {BAGS.map(b => (
-            <BagCard key={b.id} bag={b} onAdd={() => addToCart({ id: b.id, name: b.name, price: b.price, color: '#ff3a8c', qty: 1 })} />
+            <BagCard key={b.id} bag={b} onAdd={openComingSoon} />
           ))}
+        </div>
+      </section>
+
+      {/* Field Notes preview */}
+      <section className="section">
+        <SectionHead eyebrow="from the journal" title="Latest Field Notes" sub="Real lessons from our first day at the market. Updated as we learn." />
+        <div className="field-notes-grid" style={{ marginTop: 28 }}>
+          {LESSONS.slice(0, 2).map(l => (
+            <LessonCard key={l.id} lesson={l} />
+          ))}
+        </div>
+        <div style={{ marginTop: 24, textAlign: 'center' }}>
+          <button className="gummy ghost" onClick={() => setPage('notes')} style={{ fontSize: 16 }}>
+            See all field notes →
+          </button>
         </div>
       </section>
 
@@ -94,7 +185,7 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
       <section className="section">
         <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 28, alignItems: 'center' }} className="roadmap-teaser">
           <div>
-            <SectionHead eyebrow="behind the bag" title="From Kitchen Lab to Boardroom." sub="We started weighing skulls on a kitchen scale. Now we ship to three towns. Here's the map." />
+            <SectionHead eyebrow="behind the bag" title="From Kitchen Lab to Boardroom." sub="We started weighing skulls on a kitchen scale. Here's the map." />
             <div style={{ marginTop: 22 }}>
               <GummyButton color="purple" onClick={() => setPage('map')}>See the Treasure Map →</GummyButton>
             </div>
@@ -102,6 +193,9 @@ function HomePage({ setPage, addToCart, choiceLimit }) {
           <RoadmapMini />
         </div>
       </section>
+
+      {/* Mailing list */}
+      <MailingListSection />
 
       <style>{`
         @media (max-width: 900px) { .roadmap-teaser { grid-template-columns: 1fr !important; } }
@@ -128,11 +222,10 @@ function BagCard({ bag, onAdd }) {
 }
 
 // ============ LOGIC LAB ============
-function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
+function LogicLabPage({ buttonStyle, setButtonStyle }) {
   const [counts, setCounts] = useState({});
-  const [warning, setWarning] = useState('');
   const [packId, setPackId] = useState('small');     // 'small' or 'large'
-  const [founderMode, setFounderMode] = useState(false);
+  const [founderMode, setFounderMode] = useState(true);
 
   const pack = PACKAGING.find(p => p.id === packId);
   const targetG = pack.targetG;
@@ -147,7 +240,8 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
 
   const totalGrams = lines.reduce((s, l) => s + l.grams, 0);
   const totalCost = lines.reduce((s, l) => s + l.ext, 0);
-  const totalCostWithPack = totalCost + pack.cost;
+  const stickerCost = pack.stickerCost || STICKER_COST;
+  const totalCostWithPack = totalCost + pack.cost + stickerCost;
   const profit = salePrice - totalCostWithPack;
   const margin = salePrice > 0 ? (profit / salePrice) * 100 : 0;
   const distinctTypes = lines.length;
@@ -167,27 +261,8 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
   const bump = (id, delta) => {
     setCounts(prev => {
       const cur = prev[id] || 0;
-      const next = Math.max(0, cur + delta);
-      if (delta > 0 && cur === 0 && distinctTypes >= choiceLimit) {
-        setWarning(`Choice limit: bags taste best with ${choiceLimit} flavours or fewer. Reduce another flavour first.`);
-        setTimeout(() => setWarning(''), 3500);
-        return prev;
-      }
-      return { ...prev, [id]: next };
+      return { ...prev, [id]: Math.max(0, cur + delta) };
     });
-  };
-
-  const addBagToCart = () => {
-    if (totalGrams === 0) return;
-    addToCart({
-      id: 'custom-' + Date.now(),
-      name: `Custom ${pack.name.split(' ')[0]} Bag`,
-      price: salePrice,
-      color: '#ff3a8c',
-      qty: 1,
-      weight: totalGrams,
-    });
-    setCounts({});
   };
 
   const clearBag = () => setCounts({});
@@ -224,7 +299,7 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
       <SectionHead
         eyebrow="the candy calculator · real cost data"
         title="The Logic Lab"
-        sub="Build a bag. Watch the weight. Flip Founder Mode to see the actual cost, packaging, and profit math behind every bag we sell."
+        sub="Build a bag and watch the real numbers move. This is the exact math Keira and Lucy use — candy cost, packaging, sticker, sale price, and profit. Education mode: no limits on flavours, just the weight target."
       />
 
       <div className="lab-controls">
@@ -270,7 +345,7 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
       <div className="lab">
         <div className="lab-board">
           <h3>Pick your treats <span className="lab-board-target">target: {targetG}g</span></h3>
-          <p className="lab-sub">Tap + to add. We cap at <strong>{choiceLimit}</strong> flavours per bag (Pro Tip #3). Categories below sort by role — heroes first, fillers last.</p>
+          <p className="lab-sub">Tap + to add candy. No flavour limit — experiment freely. Only the weight matters. Categories sort by role — heroes first, fillers last.</p>
 
           {byCat.map(group => {
             const meta = CAT_META[group.cat];
@@ -309,11 +384,6 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
             );
           })}
 
-          {warning && (
-            <div className="lab-warning" key={warning}>
-              <span style={{ fontSize: 22 }}>🛑</span> {warning}
-            </div>
-          )}
         </div>
 
         <div className="receipt-sticky">
@@ -361,7 +431,7 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
                 </div>
                 <div className="receipt-line">
                   <span>Flavours</span>
-                  <span>{distinctTypes} / {choiceLimit}</span>
+                  <span>{distinctTypes}</span>
                 </div>
 
                 {founderMode && (
@@ -375,6 +445,10 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
                       <div className="founder-math-row">
                         <span>+ Packaging ({pack.name.split(' ')[0]})</span>
                         <span>${pack.cost.toFixed(2)}</span>
+                      </div>
+                      <div className="founder-math-row">
+                        <span>+ Sticker</span>
+                        <span>${stickerCost.toFixed(2)}</span>
                       </div>
                       <div className="founder-math-row total-cost">
                         <span>= Total cost</span>
@@ -417,16 +491,24 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
               </>
             )}
             <div style={{ marginTop: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <GummyButton color="pink" onClick={addBagToCart}>
+              <div style={{
+                textAlign: 'center',
+                fontFamily: 'Fredoka',
+                fontSize: 18,
+                padding: '14px 18px',
+                background: status === 'good' ? 'var(--green)' : 'var(--cream-2)',
+                color: status === 'good' ? 'white' : 'var(--ink)',
+                borderRadius: 16,
+                border: '2px solid var(--ink)',
+                transition: 'background 0.3s, color 0.3s',
+              }}>
                 {distinctTypes === 0
-                  ? 'Add candy to start'
-                  : status === 'good'
-                    ? `Add bag — $${salePrice.toFixed(2)}`
-                    : `Add ${totalGrams}g bag anyway`}
-              </GummyButton>
+                  ? '← Add candy to see the price'
+                  : `This bag would sell for $${salePrice.toFixed(2)}`}
+              </div>
               {distinctTypes > 0 && (
                 <button className="gummy ghost" onClick={clearBag} style={{ padding: '10px 18px', fontSize: 14 }}>
-                  Reset bag
+                  Clear
                 </button>
               )}
             </div>
@@ -464,13 +546,13 @@ function LogicLabPage({ addToCart, buttonStyle, setButtonStyle, choiceLimit }) {
 }
 
 // ============ SHOP ============
-function ShopPage({ addToCart }) {
+function ShopPage({ openComingSoon }) {
   return (
     <div className="page" data-screen-label="02 Shop">
       <SectionHead eyebrow="ready to grab" title="The Candy Shop" sub="Curated bags weighed and priced in the lab. Pick one or three." />
       <div className="bags" style={{ marginTop: 32 }}>
         {BAGS.map(b => (
-          <BagCard key={b.id} bag={b} onAdd={() => addToCart({ id: b.id, name: b.name, price: b.price, color: '#ff3a8c', qty: 1 })} />
+          <BagCard key={b.id} bag={b} onAdd={openComingSoon} />
         ))}
       </div>
 
@@ -757,6 +839,87 @@ function RoadmapMini() {
   );
 }
 
+// ============ LESSON CARD ============
+const TAG_COLORS = {
+  'Sales':     { bg: '#d5e9ff', text: '#1d76cc' },
+  'Pricing':   { bg: '#d6f5e0', text: '#1f9a52' },
+  'Packaging': { bg: '#ffe0ec', text: '#d61d70' },
+};
+
+function LessonCard({ lesson }) {
+  const tagStyle = TAG_COLORS[lesson.tag] || { bg: 'var(--cream-2)', text: 'var(--ink)' };
+  const rotations = ['-1.5deg', '1.2deg', '-0.8deg', '1.8deg'];
+  const rot = rotations[(lesson.id - 1) % rotations.length];
+  return (
+    <div className="field-note-card" style={{ transform: `rotate(${rot})` }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <span className="field-note-num">{lesson.id}</span>
+        <span style={{
+          background: tagStyle.bg,
+          color: tagStyle.text,
+          fontFamily: 'Fredoka',
+          fontWeight: 600,
+          fontSize: 13,
+          padding: '4px 12px',
+          borderRadius: 99,
+          border: `1.5px solid ${tagStyle.text}`,
+        }}>{lesson.tag}</span>
+      </div>
+      <p style={{ fontFamily: 'Nunito', fontSize: 16, color: 'var(--ink)', lineHeight: 1.55, margin: 0, flex: 1 }}>
+        {lesson.lesson}
+      </p>
+      <div style={{ marginTop: 12, fontFamily: 'Nunito', fontSize: 12, color: 'var(--ink-soft)', letterSpacing: '0.04em' }}>
+        {lesson.date}
+      </div>
+    </div>
+  );
+}
+
+// ============ FIELD NOTES PAGE ============
+function FieldNotesPage({ setPage }) {
+  return (
+    <div className="page" data-screen-label="06 Field Notes">
+      <SectionHead
+        eyebrow="straight from the journal"
+        title="Field Notes"
+        sub="Real lessons from running a real business. We write these down after every market day, every mistake, and every lightbulb moment. More to come."
+      />
+
+      <div className="learn-banner" style={{ marginTop: 32 }}>
+        <div className="learn-banner-icon">📓</div>
+        <div>
+          <strong>Updated after every market day.</strong> These aren't tips we read somewhere — they're things we figured out ourselves, the hard way (and sometimes the expensive way).
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 28, marginTop: 40 }}>
+        {LESSONS.map(l => (
+          <LessonCard key={l.id} lesson={l} />
+        ))}
+      </div>
+
+      <section className="section" style={{ marginTop: 56 }}>
+        <div style={{
+          background: 'var(--cream-2)',
+          border: '3px dashed var(--ink)',
+          borderRadius: 28,
+          padding: '32px 28px',
+          textAlign: 'center',
+        }}>
+          <div style={{ fontSize: 42, marginBottom: 12 }}>✏️</div>
+          <h3 style={{ fontFamily: 'Fredoka', fontSize: 28, marginBottom: 10 }}>More lessons on the way</h3>
+          <p style={{ color: 'var(--ink-soft)', maxWidth: 480, margin: '0 auto 20px', fontSize: 16 }}>
+            We're just getting started. Every market day teaches us something new. Check back, or get on the mailing list so you don't miss a lesson.
+          </p>
+          <GummyButton color="purple" onClick={() => setPage('map')}>See the full roadmap →</GummyButton>
+        </div>
+      </section>
+
+      <MailingListSection />
+    </div>
+  );
+}
+
 Object.assign(window, {
-  HomePage, ShopPage, LogicLabPage, MapPage, FoundersPage,
+  HomePage, ShopPage, LogicLabPage, MapPage, FoundersPage, FieldNotesPage, LessonCard, MailingListSection,
 });
