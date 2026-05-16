@@ -3,3 +3,5 @@ handoff_extracted/
 .DS_Store
 *.psd
 *.heic
+.env.local
+.env

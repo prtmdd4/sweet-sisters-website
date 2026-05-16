@@ -4,10 +4,30 @@
 function MailingListSection() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email.trim()) setDone(true);
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setDone(true);
+      } else {
+        const d = await res.json();
+        setError(d.error || 'Something went wrong. Try again!');
+      }
+    } catch {
+      setError('Could not connect. Try again!');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,9 +84,12 @@ function MailingListSection() {
                 color: 'var(--cream)',
               }}
             />
-            <GummyButton type="submit" color="pink">Subscribe</GummyButton>
+            <GummyButton type="submit" color="pink" style={{ opacity: loading ? 0.7 : 1 }}>
+              {loading ? '...' : 'Subscribe'}
+            </GummyButton>
           </form>
         )}
+        {error && <p style={{ color: 'var(--pink)', fontFamily: 'Fredoka', marginTop: 10 }}>{error}</p>}
       </div>
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: 8,

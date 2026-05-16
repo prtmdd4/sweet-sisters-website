@@ -41,12 +41,32 @@ function Logo({ onClick }) {
 function ComingSoonModal({ open, onClose }) {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   if (!open) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email.trim()) setDone(true);
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setDone(true);
+      } else {
+        const d = await res.json();
+        setError(d.error || 'Something went wrong. Try again!');
+      }
+    } catch {
+      setError('Could not connect. Try again!');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -120,9 +140,12 @@ function ComingSoonModal({ open, onClose }) {
                   background: 'white',
                 }}
               />
-              <GummyButton type="submit" color="pink">Notify me</GummyButton>
+              <GummyButton type="submit" color="pink" style={{ opacity: loading ? 0.7 : 1 }}>
+                {loading ? '...' : 'Notify me'}
+              </GummyButton>
             </form>
           )}
+          {error && <p style={{ color: 'var(--pink-deep)', fontFamily: 'Fredoka', marginTop: 10 }}>{error}</p>}
         </div>
       </div>
     </>
