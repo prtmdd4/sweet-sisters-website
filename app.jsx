@@ -4,7 +4,7 @@ const { useState: useS, useEffect: useE } = React;
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "rainbow",
   "buttonStyle": "gummy",
-  "revenue": 0,
+  "revenue": 85,
   "goal": 250,
   "showHeroStickers": true
 }/*EDITMODE-END*/;

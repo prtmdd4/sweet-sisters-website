@@ -213,7 +213,7 @@ function Toast({ message }) {
 
 // --- Marquee stripe ---
 function Marquee() {
-  const items = ['First market today 🎪', 'Bags + freezies', 'Built by kid-preneurs', 'Learn how we did it', 'Boardroom on the Lake', 'Scan · Build · Smile'];
+  const items = ['Day 2 at the market 🎪', '$85 on day one 💰', 'Built by kid-preneurs', 'Learn how we did it', 'Boardroom on the Lake', 'Scan · Build · Smile'];
   return (
     <div className="marquee">
       <div className="marquee-track">
@@ -344,6 +344,7 @@ const PACKAGING = [
 ];
 
 const LESSONS = [
+  { id: 5, date: 'May 16, 2026', tag: 'Milestone', lesson: "Day 1 done — $85 in sales at our very first market. We don't know the exact profit yet but the bag is filling up. Day 2 starts now." },
   { id: 4, date: 'May 15, 2026', tag: 'Sales', lesson: "Introduction before the actual sale is important — telling people who we are and what we're doing made a huge difference." },
   { id: 3, date: 'May 15, 2026', tag: 'Sales', lesson: "A lot of people don't carry cash, so having credit and debit as an option is a good idea." },
   { id: 2, date: 'May 15, 2026', tag: 'Pricing', lesson: "Bubs cost more than we thought — having two in one bag when selling for $5 is not a good idea." },
