@@ -106,7 +106,7 @@ function HomePage({ setPage, openComingSoon }) {
       {/* Hero */}
       <section className="hero">
         <div>
-          <span className="hero-eyebrow"><span className="dot" /> $325 across 2 markets and counting 🎉</span>
+          <span className="hero-eyebrow"><span className="dot" /> $325 of $20,000 — 2 markets in 🎪</span>
           <h1>
             <span className="rainbow-text">Boardroom</span><br />
             on the <span className="underline">Lake</span>.
@@ -612,7 +612,7 @@ function MapPage({ revenue, goal }) {
     { id: 5, status: 'done', x: 54, y: 52, title: 'Brand + Stickers', body: 'Logo, bag stickers, packaging. Pro Tip #2 in action.', when: 'Wk 3 · Apr 2026', learn: '💡 The wrapper sells.' },
     { id: 6, status: 'done', x: 22, y: 52, title: 'Website + Domain', body: 'Built sweetsisterstreats.shop with AI. Designed by us.', when: 'Wk 4 · Apr–May', learn: '💡 AI is a power tool.' },
     { id: 7, status: 'done', x: 14, y: 16, title: 'First Market Day', body: 'Made $85 on day one. First customer = first lesson. See Field Notes for what we learned.', when: 'May 15, 2026', learn: '💡 Until a stranger buys, it\'s a hobby.' },
-    { id: 8, status: 'now', x: 46, y: 16, title: 'Weekly Markets', body: 'Day 2: $240. Two markets done, $325 total — past the $250 goal. Building regulars across the Kawarthas.', when: 'May 16–ongoing', learn: '💡 Repeat > new customers.' },
+    { id: 8, status: 'now', x: 46, y: 16, title: 'Weekly Markets', body: '$325 across 2 markets. Goal is $20,000 — building regulars and stacking markets across the Kawarthas.', when: 'May 16–ongoing', learn: '💡 Repeat > new customers.' },
     { id: 9, status: 'future', x: 80, y: 16, title: 'Online Orders', body: 'Ship bags across Ontario. Website becomes the store.', when: 'Fall 2026', learn: '💡 Online works at 2am.' },
   ];
 
@@ -729,7 +729,7 @@ function ThermoBoard({ revenue, goal }) {
   const fillHeight = useRef(null);
   return (
     <section className="section">
-      <SectionHead eyebrow="goal-o-meter" title="Sales Thermometer" sub="Day 1: $85 · Day 2: $240 · Total: $325. More markets ahead." />
+      <SectionHead eyebrow="goal-o-meter" title="Sales Thermometer" sub="Day 1: $85 · Day 2: $240 · Total: $325 of $20,000. Every market gets us closer." />
       <div className="thermo-wrap">
         <div className="thermo">
           <div className="thermo-tube" style={{ height: '100%' }}>
@@ -747,7 +747,7 @@ function ThermoBoard({ revenue, goal }) {
           <div className="big">{pct.toFixed(0)}%</div>
           <div className="of">of our ${goal.toLocaleString()} goal</div>
           <div className="next">
-            <strong>Goal smashed! 🎉</strong> $85 day 1 + $240 day 2 = $325 total — past the $250 goal in just two markets.<br/>
+            <strong>$325 down, $19,675 to go.</strong> The goal is $20,000 — two markets in and the thermometer is climbing.<br/>
             <span style={{ color: 'var(--ink-soft)', fontFamily: 'Nunito' }}>That's the entire lesson: <em>start small, measure, repeat</em>.</span>
           </div>
           <div className="learn-chips">
@@ -792,7 +792,7 @@ function FoundersPage() {
           <div className="founder-stats">
             <div className="founder-stat"><div className="num">$325</div><div className="lbl">total revenue</div></div>
             <div className="founder-stat"><div className="num">2</div><div className="lbl">markets done</div></div>
-            <div className="founder-stat"><div className="num">🎯</div><div className="lbl">goal smashed</div></div>
+            <div className="founder-stat"><div className="num">$20K</div><div className="lbl">the goal</div></div>
           </div>
         </div>
       </div>

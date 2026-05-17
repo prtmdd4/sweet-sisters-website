@@ -5,7 +5,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "rainbow",
   "buttonStyle": "gummy",
   "revenue": 325,
-  "goal": 250,
+  "goal": 20000,
   "showHeroStickers": true
 }/*EDITMODE-END*/;
 
@@ -108,7 +108,7 @@ function App() {
         <TweakSlider
           label="Goal"
           value={t.goal}
-          min={50} max={1000} step={25} unit="$"
+          min={50} max={20000} step={100} unit="$"
           onChange={(v) => setTweak({ goal: v })}
         />
 
