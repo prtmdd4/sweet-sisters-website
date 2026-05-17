@@ -213,7 +213,7 @@ function Toast({ message }) {
 
 // --- Marquee stripe ---
 function Marquee() {
-  const items = ['$410 across 2 markets 💰', '$325 on day two 🎉', 'Built by kid-preneurs', 'Learn how we did it', 'Boardroom on the Lake', 'Scan · Build · Smile'];
+  const items = ['$325 across 2 markets 💰', '$240 on day two 🎉', 'Built by kid-preneurs', 'Learn how we did it', 'Boardroom on the Lake', 'Scan · Build · Smile'];
   return (
     <div className="marquee">
       <div className="marquee-track">
@@ -344,7 +344,7 @@ const PACKAGING = [
 ];
 
 const LESSONS = [
-  { id: 6, date: 'May 16, 2026', tag: 'Milestone', lesson: "$325 on day two — $410 total across both markets. We blew past our $250 goal. The repeat customers from day one came back, and word of mouth worked faster than we expected." },
+  { id: 6, date: 'May 16, 2026', tag: 'Milestone', lesson: "$240 on day two — $325 total across both markets. We passed our $250 goal. More markets ahead." },
   { id: 5, date: 'May 15, 2026', tag: 'Milestone', lesson: "Day 1 done — $85 in sales at our very first market. We don't know the exact profit yet but the bag is filling up. Day 2 starts now." },
   { id: 4, date: 'May 15, 2026', tag: 'Sales', lesson: "Introduction before the actual sale is important — telling people who we are and what we're doing made a huge difference." },
   { id: 3, date: 'May 15, 2026', tag: 'Sales', lesson: "A lot of people don't carry cash, so having credit and debit as an option is a good idea." },
