@@ -106,7 +106,7 @@ function HomePage({ setPage, openComingSoon }) {
       {/* Hero */}
       <section className="hero">
         <div>
-          <span className="hero-eyebrow"><span className="dot" /> Day 2 at the market — live now 🎪</span>
+          <span className="hero-eyebrow"><span className="dot" /> $410 in 2 markets and counting 🎉</span>
           <h1>
             <span className="rainbow-text">Boardroom</span><br />
             on the <span className="underline">Lake</span>.
@@ -612,7 +612,7 @@ function MapPage({ revenue, goal }) {
     { id: 5, status: 'done', x: 54, y: 52, title: 'Brand + Stickers', body: 'Logo, bag stickers, packaging. Pro Tip #2 in action.', when: 'Wk 3 · Apr 2026', learn: '💡 The wrapper sells.' },
     { id: 6, status: 'done', x: 22, y: 52, title: 'Website + Domain', body: 'Built sweetsisterstreats.shop with AI. Designed by us.', when: 'Wk 4 · Apr–May', learn: '💡 AI is a power tool.' },
     { id: 7, status: 'done', x: 14, y: 16, title: 'First Market Day', body: 'Made $85 on day one. First customer = first lesson. See Field Notes for what we learned.', when: 'May 15, 2026', learn: '💡 Until a stranger buys, it\'s a hobby.' },
-    { id: 8, status: 'now', x: 46, y: 16, title: 'Weekly Markets', body: 'Day 2 is live. Building regulars across the Kawarthas.', when: 'TODAY · May 16', learn: '💡 Repeat > new customers.' },
+    { id: 8, status: 'now', x: 46, y: 16, title: 'Weekly Markets', body: 'Day 2: $325. Two markets done, $410 total — blew past the $250 goal. Building regulars across the Kawarthas.', when: 'May 16–ongoing', learn: '💡 Repeat > new customers.' },
     { id: 9, status: 'future', x: 80, y: 16, title: 'Online Orders', body: 'Ship bags across Ontario. Website becomes the store.', when: 'Fall 2026', learn: '💡 Online works at 2am.' },
   ];
 
@@ -729,7 +729,7 @@ function ThermoBoard({ revenue, goal }) {
   const fillHeight = useRef(null);
   return (
     <section className="section">
-      <SectionHead eyebrow="goal-o-meter" title="Sales Thermometer" sub="Day 1: $85. Day 2 is live. Every bag and freezie fills it a little more." />
+      <SectionHead eyebrow="goal-o-meter" title="Sales Thermometer" sub="Day 1: $85 · Day 2: $325 · Total: $410. Goal smashed. More markets ahead." />
       <div className="thermo-wrap">
         <div className="thermo">
           <div className="thermo-tube" style={{ height: '100%' }}>
@@ -747,7 +747,7 @@ function ThermoBoard({ revenue, goal }) {
           <div className="big">{pct.toFixed(0)}%</div>
           <div className="of">of our ${goal.toLocaleString()} goal</div>
           <div className="next">
-            <strong>Day 1 done:</strong> $85 in sales — now building on that. Day 2 is live today. <br/>
+            <strong>Goal smashed! 🎉</strong> $85 day 1 + $325 day 2 = $410 total — past the $250 goal in just two markets.<br/>
             <span style={{ color: 'var(--ink-soft)', fontFamily: 'Nunito' }}>That's the entire lesson: <em>start small, measure, repeat</em>.</span>
           </div>
           <div className="learn-chips">
@@ -790,9 +790,9 @@ function FoundersPage() {
           <h3>Lucy <span className="role">co-founder & head of math</span></h3>
           <p>The one who keeps the spreadsheets and weighs every bag to the gram. Set the choice limit. Wrote Pro Tip #1 on the whiteboard in red marker.</p>
           <div className="founder-stats">
-            <div className="founder-stat"><div className="num">$85</div><div className="lbl">day 1 revenue</div></div>
-            <div className="founder-stat"><div className="num">2</div><div className="lbl">market days</div></div>
-            <div className="founder-stat"><div className="num">📈</div><div className="lbl">and counting</div></div>
+            <div className="founder-stat"><div className="num">$410</div><div className="lbl">total revenue</div></div>
+            <div className="founder-stat"><div className="num">2</div><div className="lbl">markets done</div></div>
+            <div className="founder-stat"><div className="num">🎯</div><div className="lbl">goal smashed</div></div>
           </div>
         </div>
       </div>
